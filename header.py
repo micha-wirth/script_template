@@ -18,11 +18,15 @@ def main():
   parser.add_argument('input_file', type=str,help="name of input file")
   args = parser.parse_args()
   file_name = args.input_file
+  
   with open(file_name, 'rt') as f:
     file_content = f.read()
+    
+  return None
   
   
 if __name__ == "__main__":
+  # execute only if run as a script
   try:
     print("Start ...")
     while True:
