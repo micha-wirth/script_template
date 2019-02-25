@@ -5,23 +5,32 @@
 """
 
 __author__ = 'Micha Wirth'
-__copyright__ = 'Copyright 2019, xyz'
 __version__ = '0.0.1'
-__maintainer __ = 'Micha Wirth'
 __status__ 'Prototype'
 
-import argparse
-
-
-def main():
-  parser = argparse.ArgumentParser(description=__doc__)
-  parser.add_argument('input_file', type=str,help="name of input file")
-  args = parser.parse_args()
-  file_name = args.input_file
-  
+def read_in(file_name):
+  """Read in data from file."""
   with open(file_name, 'rt') as f:
     file_content = f.read()
-    
+  
+
+def cli():
+  """Command-line interface"""
+  import argparse
+  
+  parser = argparse.ArgumentParser()
+  parser.add_argument('input_file',
+                      default='file_name',
+                      nargs='?',
+                      type=str,
+                      help="name of input file",
+                     )
+  args = parser.parse_args()
+  return args.input_file
+
+def main():
+  file_name = cli()
+  read_in(file_name)    
   return None
   
   
